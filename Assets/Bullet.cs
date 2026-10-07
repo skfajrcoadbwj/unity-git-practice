@@ -1,13 +1,16 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    int a;
     void Start()
     {
-        Debug.Log(a);
-        Debug.Log("Hello World");
+        Invoke("DestroySelf", 2.0f);
+    }
+
+    void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 
     // Update is called once per frame
