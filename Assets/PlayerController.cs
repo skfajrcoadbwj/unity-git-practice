@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 5f;
     public GameObject BulletPrefab;
-    public float bulletSpeed = 100f;
+    public float bulletSpeed = 150f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
