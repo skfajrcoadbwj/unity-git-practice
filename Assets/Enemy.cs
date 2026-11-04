@@ -4,9 +4,29 @@ public class Enemy : MonoBehaviour
 {
     float health = 50f;
 
+    public float speed;
+
+    public float Health
+    {
+        get { return health; }
+    }
+
     private void TakeDamage(int value)
     {
         health -= value;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void TakeDamage(float ratio)
+    {
+        health -= (int)(health * ratio);
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 
     public float GetHealth()
@@ -14,10 +34,23 @@ public class Enemy : MonoBehaviour
         return health;
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    void Die()
     {
-        TakeDamage(10);
-        Debug.Log("Health : " + health);
+        Destroy(this.gameObject);
+    }
+
+    public void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.CompareTag("Bullet"))
+        {
+            TakeDamage(10);
+            coll.gameObject.SetActive(false);
+        }
+    }
+
+    public virtual void Move()
+    {
+
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
