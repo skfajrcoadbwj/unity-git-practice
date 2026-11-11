@@ -11,13 +11,14 @@ public class Enemy : MonoBehaviour
         get { return health; }
     }
 
-    private void TakeDamage(int value)
+    void TakeDamage(int value)
     {
         health -= value;
         if (health <= 0)
         {
             Die();
         }
+        Debug.Log("Enemy Health : " + health);
     }
 
     public void TakeDamage(float ratio)
@@ -27,6 +28,7 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        Debug.Log("Enemy Health : " + health);
     }
 
     public float GetHealth()
