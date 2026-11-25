@@ -45,6 +45,13 @@ public class Enemy : MonoBehaviour
     {
         if (coll.gameObject.CompareTag("Bullet"))
         {
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+            }
+
             TakeDamage(10);
             coll.gameObject.SetActive(false);
         }
@@ -58,12 +65,12 @@ public class Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
